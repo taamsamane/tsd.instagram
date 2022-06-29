@@ -9,6 +9,16 @@
             "Tsd\\Instagram\\": "src/"
         }
     },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "TSD\\Instagram\\Providers\\InstagramServiceProvider"
+            ],
+            "aliases": {
+                "InstaBasic": "TSD\\Instagram\\Facades\\InstaBasic"
+            }
+        }
+    },
     "authors": [
         {
             "name": "Farshad Fakhar",
