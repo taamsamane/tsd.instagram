@@ -1,8 +1,8 @@
 {
     "name": "tsd/instagram",
     "description": "Instagram Basic Display API For Laravel",
+    "keywords": ["Instagram", "Basic Display API"],
     "require": {
-        "laravel": "8"
     },
     "autoload": {
         "psr-4": {
