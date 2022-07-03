@@ -37,8 +37,8 @@ class BasicDisplay extends Controller
 		if (!$this->access_token)
 			throw new Exception("First Get Access Token");
 
-		$req = Http::get('https://graph.instagram.com/me/media?fields=id,caption,media_type,media_url&access_token=' . $this->access_token);
-		
+		$req = Http::get('https://graph.instagram.com/me/media?fields=id,caption,media_type,media_url,children{media_type,media_url,thumbnail_url}&access_token=' . $this->access_token);
+
 		if (!$req->successful())
 			throw new Exception($req->body());
 
@@ -80,7 +80,7 @@ class BasicDisplay extends Controller
 	private function getNextPages($url)
 	{
 		$req = Http::get($url);
-		
+
 		if (!$req->successful())
 			throw new Exception($req->body());
 
