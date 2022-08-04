@@ -115,6 +115,9 @@ class BasicDisplay extends Controller
 
 	public function getUserId($username)
 	{
-		$req = Http::get("https://api.instagram.com/v1/users/search?q={$username}&access_token={$this->access_token}");
+		/**
+		 * @TDO get user id
+		 */
+		return null;
 	}
 }
