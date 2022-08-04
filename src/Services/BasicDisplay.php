@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Exception;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
 
 class BasicDisplay extends Controller
 {
@@ -90,5 +91,33 @@ class BasicDisplay extends Controller
 			if (isset($res['paging']['next']))
 				$this->getNextPages($res['paging']['next']);
 		}
+	}
+
+	public function isUrl($input)
+	{
+		return Validator::make(['input' => $input], ['input' => ['regex:/^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/']])->passes();
+	}
+
+	public function getUserName($input)
+	{
+		if ($this->isUrl($input) && strpos($input, 'instagram') !== false) {
+			$input = pathinfo($input);
+			$input = $input['basename'];
+		}
+
+		return trim($input, '/');
+	}
+
+	public function getPage($input)
+	{
+		return "https://www.instagram.com/" . $this->getUserName($input);
+	}
+
+	public function getUserId($username)
+	{
+		/**
+		 * @TDO get user id
+		 */
+		return null;
 	}
 }
