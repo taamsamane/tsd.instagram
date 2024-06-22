@@ -104,6 +104,7 @@ class BasicDisplay extends Controller
 			$input = pathinfo($input);
 			$input = $input['basename'];
 		}
+		$input = ltrim($input,'@');
 
 		return trim($input, '/');
 	}
